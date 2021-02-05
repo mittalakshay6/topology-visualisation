@@ -1,10 +1,10 @@
 ---
 defaults:
-    contact: idebugall@gmail.com
+    contact: akshmitt@cisco.com
 
-devnet-cml-lab:
-    username: cisco
-    password: cisco
+mcast-india-lab:
+    username: lab
+    password: lab123
     connection_options:
         napalm:
             extras:
