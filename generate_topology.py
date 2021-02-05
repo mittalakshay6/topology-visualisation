@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.7
+#!/usr/local/bin/python3.8
 
 """
 An automated topology visualization solution based on LLDP data.
