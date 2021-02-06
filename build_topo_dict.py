@@ -84,7 +84,6 @@ def restore_running_config_on_all_devices(devices, running_conf_dict):
 
 def commit_replace_all_devices(devices):
     for device in devices:
-        print(device.name)
         device.configure("commit replace")
         device.disconnect()
     connect_to_all_devices(devices)
@@ -100,7 +99,6 @@ def configure_hostname_on_all_devices(devices):
 def configure_lldp_on_all_devices(devices):
 
     for device in devices:
-        print(device.name)
         configure.configure_lldp(device)
 
 
