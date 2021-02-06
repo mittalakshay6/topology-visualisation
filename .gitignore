@@ -141,5 +141,5 @@ cython_debug/
 # vscode
 core.node.*
 .vscode
-*.workspace
+*.code-workspace
 
