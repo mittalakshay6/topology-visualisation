@@ -31,6 +31,3 @@ def clear_line(host, port):
     except EOFError:
         print("Clear line has failed for {host}:{port}".format(
             host=host, port=port))
-
-
-clear_line("10.64.103.90", 2027)
