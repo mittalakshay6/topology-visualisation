@@ -4,63 +4,64 @@
      */
     // Initialize topology
     var topo = new nx.graphic.Topology({
-        // View dimensions
-        width: 1200,
-        height: 700,
-        // Dataprocessor is responsible for spreading 
-        // the Nodes across the view.
-        // 'force' dataprocessor spreads the Nodes so
-        // they would be as distant from each other
-        // as possible. Follow social distancing and stay healthy.
-        // 'quick' dataprocessor picks random positions
-        // for the Nodes.
-        dataProcessor: 'force',
-        // Node and Link identity key attribute name
-        identityKey: 'id',
-        // Node settings
-        nodeConfig: {
-            label: 'model.name',
-            iconType:'model.icon',
-            color: function(model) {
-                if (model._data.is_new === 'yes') {
-                    return '#148D09'
-                }
-            },
+      // View dimensions
+      width: window.innerWidth,
+      height: window.innerHeight,
+      // Dataprocessor is responsible for spreading
+      // the Nodes across the view.
+      // 'force' dataprocessor spreads the Nodes so
+      // they would be as distant from each other
+      // as possible. Follow social distancing and stay healthy.
+      // 'quick' dataprocessor picks random positions
+      // for the Nodes.
+      dataProcessor: "force",
+      // Node and Link identity key attribute name
+      identityKey: "id",
+      // Node settings
+      nodeConfig: {
+        label: "model.name",
+        iconType: "model.icon",
+        color: function (model) {
+          if (model._data.is_new === "yes") {
+            return "#148D09";
+          }
         },
-        // Node Set settings (for future use)
-        nodeSetConfig: {
-            label: 'model.name',
-            iconType: 'model.iconType'
+      },
+      // Node Set settings (for future use)
+      nodeSetConfig: {
+        label: "model.name",
+        iconType: "model.iconType",
+      },
+      // Tooltip content settings
+      tooltipManagerConfig: {
+        nodeTooltipContentClass: "CustomNodeTooltip",
+        linkTooltipContentClass: "MyLinkTooltip",
+      },
+      // Link settings
+      linkConfig: {
+        // Display Links as curves in case of
+        //multiple links between Node Pairs.
+        // Set to 'parallel' to use parallel links.
+        linkType: "curve",
+        sourcelabel: "model.srcIfName",
+        targetlabel: "model.tgtIfName",
+        style: function (model) {
+          if (model._data.is_dead === "yes") {
+            return { "stroke-dasharray": "5" };
+          }
         },
-        // Tooltip content settings
-        tooltipManagerConfig: {
-            nodeTooltipContentClass: 'CustomNodeTooltip'
+        color: function (model) {
+          if (model._data.is_dead === "yes") {
+            return "#E40039";
+          }
+          if (model._data.is_new === "yes") {
+            return "#148D09";
+          }
         },
-        // Link settings
-        linkConfig: {
-            // Display Links as curves in case of 
-            //multiple links between Node Pairs.
-            // Set to 'parallel' to use parallel links.
-            linkType: 'curve',
-            sourcelabel: 'model.srcIfName',
-            targetlabel: 'model.tgtIfName',
-            style: function(model) {
-                if (model._data.is_dead === 'yes') {
-                    return { 'stroke-dasharray': '5' }
-                }
-            },
-            color: function(model) {
-                if (model._data.is_dead === 'yes') {
-                    return '#E40039'
-                }
-                if (model._data.is_new === 'yes') {
-                    return '#148D09'
-                }
-            },
-        },
-        // Display Node icon. Displays a dot if set to 'false'.
-        showIcon: true,
-        linkInstanceClass: 'CustomLinkClass' 
+      },
+      // Display Node icon. Displays a dot if set to 'false'.
+      showIcon: true,
+                      //   linkInstanceClass: "CustomLinkClass",
     });
 
     topo.registerIcon("dead_node", "img/dead_node.png", 49, 49);
@@ -74,6 +75,87 @@
                 topo.attach(this);
             }
         }
+    });
+
+    nx.define("MyLinkTooltip", nx.ui.Component, {
+      properties: {
+        node: {},
+        link: {},
+        topology: {},
+      },
+      view: {
+        content: [
+          {
+            tag: "p",
+            content: [
+              {
+                tag: "label",
+                tag: "b",
+                content: "SrcDevice: ",
+              },
+              {
+                tag: "p",
+                content: "{#link.model.srcDevice}",
+              },
+              {
+                tag: "label",
+                tag: "b",
+                content: "SrcIntf: ",
+              },
+              {
+                tag: "p",
+                content: "{#link.model.srcIfName}",
+              },
+              {
+                tag: "label",
+                tag: "b",
+                content: "TgtDevice: ",
+              },
+              {
+                tag: "p",
+                content: "{#link.model.tgtDevice}",
+              },
+              {
+                tag: "label",
+                tag: "b",
+                content: "TgtIntf: ",
+              },
+              {
+                tag: "p",
+                content: "{#link.model.tgtIfName}",
+              },
+            ],
+          },
+        ],
+      },
+    });
+    nx.define("Tooltip.Link", nx.ui.Component, {
+      view: {
+        content: {
+          name: "topo",
+          type: "nx.graphic.Topology",
+          props: {
+            adaptive: true,
+            nodeConfig: {
+              label: "model.id",
+            },
+            linkConfig: {
+              linkType: "curve",
+            },
+            tooltipManagerConfig: {
+              linkTooltipContentClass: "MyLinkTooltip",
+            },
+            showIcon: true,
+            data: topologyData,
+          },
+        },
+      },
+      methods: {
+        attach: function (args) {
+          this.inherited(args);
+          this.model(mainModel);
+        },
+      },
     });
 
     nx.define('CustomNodeTooltip', nx.ui.Component, {
@@ -99,10 +181,10 @@
                     content: [
                         {
                         tag: 'label',
-                        content: 'IP: ',
+                        content: 'Telnet IP: ',
                     }, {
                         tag: 'label',
-                        content: '{#node.model.primaryIP}',
+                        content: '{#node.model.telnetIP}',
                     }
                     ],
                     props: {
@@ -113,28 +195,29 @@
                     content: [
                         {
                         tag: 'label',
-                        content: 'Model: ',
+                        content: 'Telnet Port: ',
                     }, {
                         tag: 'label',
-                        content: '{#node.model.model}',
+                        content: '{#node.model.telnetPort}',
                     }
                     ],
                     props: {
                         "style": "font-size:80%;"
                     }
-                }, {
-                    tag: 'p',
-                    content: [{
-                        tag: 'label',
-                        content: 'S/N: ',
-                    }, {
-                        tag: 'label',
-                        content: '{#node.model.serial_number}',
-                    }],
-                    props: {
-                        "style": "font-size:80%; padding:0"
-                    }
                 },
+                //  {
+                //     tag: 'p',
+                //     content: [{
+                //         tag: 'label',
+                //         content: 'S/N: ',
+                //     }, {
+                //         tag: 'label',
+                //         content: '{#node.model.serial_number}',
+                //     }],
+                //     props: {
+                //         "style": "font-size:80%; padding:0"
+                //     }
+                // },
             ],
             props: {
                 "style": "width: 150px;"

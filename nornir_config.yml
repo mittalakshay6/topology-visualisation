@@ -1,8 +1,0 @@
----
-core:
-    num_workers: 20
-inventory:
-    plugin: nornir.plugins.inventory.simple.SimpleInventory
-    options:
-        host_file: "inventory/hosts_mcast_india.yml"
-        group_file: "inventory/groups.yml"
