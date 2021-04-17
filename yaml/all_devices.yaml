@@ -1,0 +1,740 @@
+devices:
+  Turin_2004:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2004
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  # Tortin_2009:
+  #   connections:
+  #     default:
+  #       class: unicon.Unicon
+  #     a:
+  #       ip: 10.64.103.82
+  #       # port: 2035
+  #       port: 2009
+  #       protocol: telnet
+  #   credentials:
+  #     default:
+  #       password: "lab123"
+  #       username: lab
+  #     enable:
+  #       password: "lab123"
+  #   os: iosxr
+  #   # type: iosxr
+  #   type: router
+  #   custom:
+  #     execute_timeout: 80
+  #     configure_timeout: 65
+  #     abstraction:
+  #       order: [os]
+
+  # Zermatt_2010:
+  #   connections:
+  #       default:
+  #           class: unicon.Unicon
+  #       a:
+  #           ip: 10.64.103.82
+  #           # port: 2035
+  #           port: 2010
+  #           protocol: telnet
+  #   credentials:
+  #     default:
+  #       password: 'lab123'
+  #       username: lab
+  #     enable:
+  #       password: 'lab123'
+  #   os: iosxr
+  #   # type: iosxr
+  #   type: router
+  #   custom:
+  #     execute_timeout: 80
+  #     configure_timeout: 65
+  #     abstraction:
+  #         order: [os]
+
+  Tortin_2011:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2011
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Tortin_2008:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2008
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Pyke_2006:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2006
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Pyke_2007:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2007
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Tortin_2012:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2012
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Taihu_2027:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.90
+        # port: 2035
+        port: 2027
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Turin_2014:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2014
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Tortin_2005:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2005
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Tortin_2018:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2018
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Bigbend_2017:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2017
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Tortin_2019:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2019
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Bigbend_2020:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2020
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  # Bigbend_2021:
+  #   connections:
+  #     default:
+  #       class: unicon.Unicon
+  #     a:
+  #       ip: 10.64.103.82
+  #       # port: 2035
+  #       port: 2021
+  #       protocol: telnet
+  #   credentials:
+  #     default:
+  #       password: "lab123"
+  #       username: lab
+  #     enable:
+  #       password: "lab123"
+  #   os: iosxr
+  #   # type: iosxr
+  #   type: router
+  #   custom:
+  #     execute_timeout: 80
+  #     configure_timeout: 65
+  #     abstraction:
+  #       order: [os]
+
+  # Darwin_2024:
+  #   connections:
+  #       default:
+  #           class: unicon.Unicon
+  #       a:
+  #           ip: 10.64.103.82
+  #           # port: 2035
+  #           port: 2024
+  #           protocol: telnet
+  #   credentials:
+  #     default:
+  #       password: 'lab123'
+  #       username: lab
+  #     enable:
+  #       password: 'lab123'
+  #   os: iosxr
+  #   # type: iosxr
+  #   type: router
+  #   custom:
+  #     execute_timeout: 80
+  #     configure_timeout: 65
+  #     abstraction:
+  #         order: [os]
+
+  UFI_2022:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2022
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  UFI_2025:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2025
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Arches_2013:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2013
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  J2Mod_2028:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2028
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  RSP4_2032:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2032
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  RSP4_2039:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2039
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  RSP4_2002_03:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2002
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2003
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  JMod_2015_16:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2015
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2016
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  RSP4_2034_35:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2034
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2035
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  RSP4_2040_41:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2040
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2041
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  # DDC_2025_40:
+  #   connections:
+  #     default:
+  #       class: unicon.Unicon
+  #     a:
+  #       ip: 10.64.103.90
+  #       port: 2025
+  #       protocol: telnet
+  #     b:
+  #       ip: 10.64.103.90
+  #       port: 2040
+  #       protocol: telnet
+  #   credentials:
+  #     default:
+  #       password: "lab123"
+  #       username: lab
+  #     enable:
+  #       password: "lab123"
+  #   os: iosxr
+  #   # type: iosxr
+  #   type: router
+  #   custom:
+  #     execute_timeout: 80
+  #     configure_timeout: 65
+  #     abstraction:
+  #       order: [os]
+
+  Eyrie_2023_26:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2023
+        protocol: telnet
+      # b:
+      #     ip: 10.64.103.82
+      #     port: 2026
+      #     protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
+
+  Darwin_2024:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        port: 2024
+        protocol: telnet
+      # b:
+      #     ip: 10.64.103.82
+      #     port: 2026
+      #     protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]

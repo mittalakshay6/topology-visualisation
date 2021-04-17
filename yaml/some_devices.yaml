@@ -1,0 +1,24 @@
+devices:
+  J2Mod_2028:
+    connections:
+      default:
+        class: unicon.Unicon
+      a:
+        ip: 10.64.103.82
+        # port: 2035
+        port: 2028
+        protocol: telnet
+    credentials:
+      default:
+        password: "lab123"
+        username: lab
+      enable:
+        password: "lab123"
+    os: iosxr
+    # type: iosxr
+    type: router
+    custom:
+      execute_timeout: 80
+      configure_timeout: 65
+      abstraction:
+        order: [os]
