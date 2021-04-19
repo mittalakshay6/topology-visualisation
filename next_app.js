@@ -158,72 +158,98 @@
       },
     });
 
-    nx.define('CustomNodeTooltip', nx.ui.Component, {
-        properties: {
-            node: {},
-            topology: {}
-        },
-        view: {
-            content: [{
-                tag: 'div',
-                content: [{
-                    tag: 'h5',
-                    content: [{
-                        tag: 'a',
-                        content: '{#node.model.name}',
-                        props: {"href": "{#node.model.dcimDeviceLink}"}
-                    }],
-                    props: {
-                        "style": "border-bottom: dotted 1px; font-size:90%; word-wrap:normal; color:#003688"
-                    }
-                }, {
-                    tag: 'p',
-                    content: [
-                        {
-                        tag: 'label',
-                        content: 'Telnet IP: ',
-                    }, {
-                        tag: 'label',
-                        content: '{#node.model.telnetIP}',
-                    }
-                    ],
-                    props: {
-                        "style": "font-size:80%;"
-                    }
-                },{
-                    tag: 'p',
-                    content: [
-                        {
-                        tag: 'label',
-                        content: 'Telnet Port: ',
-                    }, {
-                        tag: 'label',
-                        content: '{#node.model.telnetPort}',
-                    }
-                    ],
-                    props: {
-                        "style": "font-size:80%;"
-                    }
+    nx.define("CustomNodeTooltip", nx.ui.Component, {
+      properties: {
+        node: {},
+        topology: {},
+      },
+      view: {
+        content: [
+          {
+            tag: "div",
+            content: [
+              {
+                tag: "h5",
+                content: [
+                  {
+                    tag: "a",
+                    content: "{#node.model.name}",
+                    props: { href: "{#node.model.dcimDeviceLink}" },
+                  },
+                ],
+                props: {
+                  style:
+                    "border-bottom: dotted 1px; font-size:90%; word-wrap:normal; color:#003688",
                 },
-                //  {
-                //     tag: 'p',
-                //     content: [{
-                //         tag: 'label',
-                //         content: 'S/N: ',
-                //     }, {
-                //         tag: 'label',
-                //         content: '{#node.model.serial_number}',
-                //     }],
-                //     props: {
-                //         "style": "font-size:80%; padding:0"
-                //     }
-                // },
+              },
+              {
+                tag: "p",
+                content: [
+                  {
+                    tag: "label",
+                    content: "Telnet IP: ",
+                  },
+                  {
+                    tag: "label",
+                    content: "{#node.model.telnetIP}",
+                  },
+                ],
+                props: {
+                  style: "font-size:80%;",
+                },
+              },
+              {
+                tag: "p",
+                content: [
+                  {
+                    tag: "label",
+                    content: "Telnet Port: ",
+                  },
+                  {
+                    tag: "label",
+                    content: "{#node.model.telnetPort}",
+                  },
+                ],
+                props: {
+                  style: "font-size:80%;",
+                },
+              },
+              {
+                tag: "p",
+                content: [
+                  {
+                    tag: "label",
+                    content: "TGEN: ",
+                  },
+                  {
+                    tag: "label",
+                    content: "{#node.model.tgen}",
+                  },
+                ],
+                props: {
+                  style: "font-size:80%;",
+                },
+              },
+              //  {
+              //     tag: 'p',
+              //     content: [{
+              //         tag: 'label',
+              //         content: 'S/N: ',
+              //     }, {
+              //         tag: 'label',
+              //         content: '{#node.model.serial_number}',
+              //     }],
+              //     props: {
+              //         "style": "font-size:80%; padding:0"
+              //     }
+              // },
             ],
             props: {
-                "style": "width: 150px;"
-            }
-        }]
-        }
+              style: "width: 150px;",
+            },
+          },
+        ],
+      },
     });
 
     nx.define('Tooltip.Node', nx.ui.Component, {

@@ -29,6 +29,10 @@ def build_topology_json_dict(topology_list, devices):
                 localport = devices[local_name].connections.a.port
             except KeyError:
                 localport = None
+            try:
+                tgen = devices[local_name].tgen
+            except KeyError:
+                tgen = None
             topology_dict["nodes"].append(
                 {
                     "id": host_id,
@@ -36,6 +40,7 @@ def build_topology_json_dict(topology_list, devices):
                     "telnetIP": localip,
                     "telnetPort": localport,
                     "icon": "router",
+                    "tgen": str(tgen),
                 }
             )
             host_id += 1
@@ -49,6 +54,10 @@ def build_topology_json_dict(topology_list, devices):
                 remoteport = devices[remote_name].connections.a.port
             except KeyError:
                 remoteport = None
+            try:
+                tgen = devices[remote_name].tgen
+            except KeyError:
+                tgen = None
             topology_dict["nodes"].append(
                 {
                     "id": host_id,
@@ -56,6 +65,7 @@ def build_topology_json_dict(topology_list, devices):
                     "telnetIP": remoteip,
                     "telnetPort": remoteport,
                     "icon": "router",
+                    "tgen": tgen,
                 }
             )
             host_id += 1
