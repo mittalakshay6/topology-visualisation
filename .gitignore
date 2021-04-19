@@ -143,3 +143,8 @@ core.node.*
 .vscode
 *.code-workspace
 
+# Project specific files to be ignored
+*.xlsx
+settings.cfg
+test.yaml
+topology_tmp.js
