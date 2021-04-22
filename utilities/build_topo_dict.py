@@ -165,6 +165,13 @@ def restore_running_config_on_all_devices(devices):
         pprint("Restoring running config on {device}".format(device=device.name))
         try:
             device.state_machine.hostname = device.old_hostname
+            if device.old_hostname == "ios":
+                device.configure("no hostname", prompt_recovery=True)
+            else:
+                device.configure(
+                    "hostname {old_hostname}".format(old_hostname=device.old_hostname),
+                    prompt_recovery=True,
+                )
             restore_running_config(
                 device, "harddisk:/", "show_topology_run_config.conf"
             )
@@ -179,7 +186,7 @@ def restore_running_config_on_all_devices(devices):
 
 def commit_replace_hostame_config(device):
     # Note: The name under devices in testbed yaml file must always match the hostname.
-
+    device.state_machine.hostname = "ios"
     device.configure("commit replace", prompt_recovery=True)
     device.state_machine.hostname = device.name
     device.configure(

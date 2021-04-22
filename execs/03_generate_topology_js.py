@@ -24,3 +24,4 @@ topology_json = build_topology_json_dict(topo_list, testbed.devices)
 write_topology_file(topology_json)
 
 print("Topology.js file created.")
+print("SUCCESS !!!")

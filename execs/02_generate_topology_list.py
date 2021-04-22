@@ -2,8 +2,24 @@
 
 from pprint import pprint
 from genie.testbed import load
-from utilities.build_topo_dict import *
+
+import sys
 import json
+import pathlib
+
+sys.path.append(str(pathlib.Path(__file__).parent.parent.absolute()))
+
+from utilities.build_topo_dict import *
+
+
+def countdown(time_sec):
+
+    while time_sec:
+        mins, secs = divmod(time_sec, 60)
+        timer = "{:02d}:{:02d}".format(mins, secs)
+        print(timer, end="\r")
+        time.sleep(1)
+        time_sec -= 1
 
 
 yaml_file_location = "yaml/testbed.yaml"
@@ -33,7 +49,7 @@ pprint("Configuring lldp on all the devices")
 configure_lldp_on_all_devices(devices_success)
 
 pprint("Sleep for 30 sec for LLDP packets exchange")
-time.sleep(30)
+countdown(30)
 
 pprint("Building LLDP info dict")
 lldp_info_dict = build_lldp_info_dict(devices_success)
@@ -43,8 +59,12 @@ restore_running_config_on_all_devices(devices_success)
 pprint("Release all devices")
 disconnect_from_all_devices(devices_success)
 
+print("Build topology list")
 topo_list = build_topology_list_from_lldp_info(lldp_info_dict)
 
+print("Write topology list to file.")
 # Write topology list to file.
 with open("./tmp/topology.list", "w") as filehandler:
     json.dump(topo_list, filehandler)
+
+print("SUCCESS !!!")

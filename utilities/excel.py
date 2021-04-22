@@ -7,6 +7,11 @@ from office365.runtime.http.request_options import RequestOptions
 from openpyxl import load_workbook
 
 TESTBED_FILE_LOCAL_NAME = "testbed_tracker_downloaded.xlsx"
+COL_ROUTER_NAME = 1
+COL_IP = 2
+COL_PORT1 = 4
+COL_PORT2 = 5
+COL_TGEN = 6
 
 
 def download_testbed_excel_file():
@@ -38,20 +43,36 @@ def open_excel_worksheet():
 
 
 def construct_testbed_yaml_dict_from_excel_ws(ws):
+    """
+    Construct a dict from the excel worksheet object. This function assumes the
+    following format of excel sheet.
+    Col A: Router name
+    Col B: Router's telnet IP address
+    Col D: Telnet console port 1
+    Col E: Telet console port 2
+
+    :param ws:
+        Excel worksheet object.
+
+    :return:
+        Yaml dictionary
+    """
+
     yaml_dict = {"devices": {}}
-    col = 1
     for row in range(2, 1000):
-        device = ws.cell(row=row, column=col).value
+        device = ws.cell(row=row, column=COL_ROUTER_NAME).value
         if device is None:
             break
-        port = ws.cell(row=row, column=col + 1).value
+        port = ws.cell(row=row, column=COL_PORT1).value
         if port is None:
             continue
         device_name = device + "_" + str(port)
         port2 = None
-        if ws.cell(row=row, column=col + 2).value is not None:
-            port2 = ws.cell(row=row, column=col + 2).value
-        ip = ws.cell(row=row, column=col + 3).value
+        if ws.cell(row=row, column=COL_PORT2).value is not None:
+            port2 = ws.cell(row=row, column=COL_PORT2).value
+        ip = ws.cell(row=row, column=COL_IP).value
+        if ip is None:
+            continue
         if port2 is None:
             device_dict = {
                 device_name: {
@@ -78,7 +99,7 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                     "connections": {
                         "default": {"class": "unicon.Unicon"},
                         "a": {"ip": ip, "port": port, "protocol": "telnet"},
-                        "a": {"ip": ip, "port": port2, "protocol": "telnet"},
+                        "b": {"ip": ip, "port": port2, "protocol": "telnet"},
                     },
                     "credentials": {
                         "default": {"password": "lab123", "username": "lab"},
@@ -103,14 +124,18 @@ def write_yaml_dict_to_yaml_file(source_yaml_dict, dest_filename):
 
 
 def add_tgen_info_to_device_objects_from_ws(ws, devices):
-    col = 1
     for row in range(2, 1000):
-        device = ws.cell(row=row, column=col).value
+        device = ws.cell(row=row, column=COL_ROUTER_NAME).value
         if device is None:
             break
-        port = ws.cell(row=row, column=col + 1).value
+        port = ws.cell(row=row, column=COL_PORT1).value
         if port is None:
             continue
         device_name = device + "_" + str(port)
-        tgen = ws.cell(row=row, column=col + 4).value
-        devices[device_name].tgen = str(tgen)
+        tgen = ws.cell(row=row, column=COL_TGEN).value
+        try:
+            devices[device_name].tgen = str(tgen)
+        except KeyError:
+            print(
+                "{device_name} not found in yaml file".format(device_name=device_name)
+            )
