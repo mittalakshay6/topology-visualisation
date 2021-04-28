@@ -37,8 +37,5 @@ t1 = time.time()
 t = t1 - t0
 ty_res = time.gmtime(t)
 res = time.strftime("%M:%S", ty_res)
-print(
-    "SUCCESS !!! (Time taken = {min} min and {sec} seconds)".format(
-        min=res.split(":")[0], sec=res.split(":")[1]
-    )
-)
+print("SUCCESS !!! (Time taken = {min} min and {sec} seconds)".format(
+    min=res.split(":")[0], sec=res.split(":")[1]))
