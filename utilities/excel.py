@@ -38,7 +38,9 @@ def download_testbed_excel_file():
 
 
 def open_excel_worksheet():
-    wb = load_workbook(filename=TESTBED_FILE_LOCAL_NAME)
+    wb = load_workbook(
+        filename=TESTBED_FILE_LOCAL_NAME, data_only=True, keep_links=False
+    )
     ws = wb.active
     return ws
 
