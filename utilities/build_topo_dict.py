@@ -90,7 +90,7 @@ def disconnect_from_all_devices(devices):
     for device in devices:
         pprint("Disconnecting from device {device}".format(device=device.name))
         try:
-            device.disconnect()
+            device.destroy()
         except Exception as err:
             pprint(
                 "Failed to disconnect from device {device} : {err}".format(
@@ -186,7 +186,7 @@ def commit_replace_hostame_config(device):
     device.configure(
         "hostname {device_name}".format(device_name=device.name), prompt_recovery=True
     )
-    device.disconnect()
+    device.destroy()
     device.connect(prompt_recovery=True, learn_hostname=True, login_creds=login_creds)
 
 
