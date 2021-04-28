@@ -85,6 +85,10 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                     },
                     "credentials": {
                         "default": {"password": "lab123", "username": "lab"},
+                        "alternate0": {"password": "lab123", "username": "root"},
+                        "alternate1": {"password": "test123", "username": "root"},
+                        "alternate2": {"password": "root!lab", "username": "root"},
+                        "alternate3": {"password": "root123", "username": "root1"},
                         "enable": {"password": "lab123"},
                     },
                     "os": "iosxr",
@@ -108,6 +112,10 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                     },
                     "credentials": {
                         "default": {"password": "lab123", "username": "lab"},
+                        "alternate0": {"password": "lab123", "username": "root"},
+                        "alternate1": {"password": "test123", "username": "root"},
+                        "alternate2": {"password": "root!lab", "username": "root"},
+                        "alternate3": {"password": "root123", "username": "root1"},
                         "enable": {"password": "lab123"},
                     },
                     "os": "iosxr",

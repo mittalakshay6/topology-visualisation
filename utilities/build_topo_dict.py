@@ -18,6 +18,9 @@ from genie.libs.sdk.apis.iosxr.running_config.configure import restore_running_c
 # TODO: Implement concurrency for possible parallel operations on the routers.
 
 
+login_creds = ["default", "alternate0", "alternate1", "alternate2", "alternate3"]
+
+
 def build_device_object_list(testbed):
 
     pprint("Building the device object list")
@@ -45,8 +48,6 @@ def connect_to_all_devices(devices, force=True):
                         reason=str(err),
                     )
                 )
-                # failed.append(device)
-                # continue
             try:
                 clear_line(str(device.connections.b.ip), device.connections.b.port)
             except EOFError as err:
@@ -58,19 +59,16 @@ def connect_to_all_devices(devices, force=True):
                         reason=str(err),
                     )
                 )
-                # failed.append(device)
-                # continue
             except AttributeError as err:
                 pass
-                # pprint(
-                #     "Failed to clear line for {device}, May not be HA device, Reason: {reason}".format(
-                #         device=device.name, reason=str(err)
-                #     )
-                # )
-                # continue
         try:
             pprint("Try to connect to device {device}".format(device=device.name))
-            device.connect(learn_hostname=True, prompt_recovery=True, log_stdout=False)
+            device.connect(
+                learn_hostname=True,
+                prompt_recovery=True,
+                log_stdout=False,
+                login_creds=login_creds,
+            )
             success.append(device)
             continue
         except Exception as err:
@@ -189,7 +187,7 @@ def commit_replace_hostame_config(device):
         "hostname {device_name}".format(device_name=device.name), prompt_recovery=True
     )
     device.disconnect()
-    device.connect(prompt_recovery=True, learn_hostname=True)
+    device.connect(prompt_recovery=True, learn_hostname=True, login_creds=login_creds)
 
 
 def commit_replace_hostname_config_all(devices):
