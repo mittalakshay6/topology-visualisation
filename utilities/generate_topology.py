@@ -29,10 +29,7 @@ def build_topology_json_dict(topology_list, devices):
                 localport = devices[local_name].connections.a.port
             except KeyError:
                 localport = None
-            try:
-                tgen = devices[local_name].tgen
-            except KeyError:
-                tgen = None
+            tgen = devices[local_name].custom.tgen
             topology_dict["nodes"].append(
                 {
                     "id": host_id,
@@ -54,10 +51,7 @@ def build_topology_json_dict(topology_list, devices):
                 remoteport = devices[remote_name].connections.a.port
             except KeyError:
                 remoteport = None
-            try:
-                tgen = devices[remote_name].tgen
-            except KeyError:
-                tgen = None
+            tgen = devices[remote_name].custom.tgen
             topology_dict["nodes"].append(
                 {
                     "id": host_id,

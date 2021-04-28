@@ -45,6 +45,8 @@ save_running_config_on_all_devices(devices_success)
 
 commit_replace_hostname_config_all(devices_success)
 
+apply_mh_config_all(devices_success)
+
 pprint("Configuring lldp on all the devices")
 configure_lldp_on_all_devices(devices_success)
 

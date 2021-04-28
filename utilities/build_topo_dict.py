@@ -123,9 +123,7 @@ def save_running_config(device):
                 cmd, timeout=command_timeout, reply=Dialog([yes_cmd])
             )
         except Exception as e:
-            raise Exception(
-                "Cannot save running-config to startup-config {}".format(str(e))
-            )
+            raise Exception("Cannot save running-config {}".format(str(e)))
         # Copy in progress...
         pprint(output)
         if "[OK]" in output or "Copy complete" in output:
@@ -139,7 +137,7 @@ def save_running_config(device):
             continue
     else:
         # No break
-        raise Exception("Failed to save running-config to startup-config")
+        raise Exception("Failed to save running-config.")
 
 
 def save_running_config_on_all_devices(devices):
@@ -214,38 +212,23 @@ def commit_replace_hostname_config_all(devices):
     pprint("Commit replace and hostname config done on all devices")
 
 
-def commit_replace_all_devices(devices):
+def apply_mh_config(device):
+    device.configure(device.custom.mh_config)
 
+
+def apply_mh_config_all(devices):
     for device in devices:
+        if not device.custom.mh_config:
+            continue
         try:
-            device.configure("commit replace", prompt_recovery=True)
-            device.disconnect()
-        except Exception:
-            pprint(
-                "Failed to commit replace {device}, retrying once.".format(device.name)
-            )
-            try:
-                device.disconnect()
-                device.connect(learn_hostname=True, prompt_recovery=True)
-                device.configure("commit replace", prompt_recovery=True)
-                device.disconnect()
-            except Exception:
-                pprint(
-                    "Failed to commit replace {device} again. Moving ahead".format(
-                        device.name
-                    )
+            print("Applying MH Config on {device}".format(device=device.name))
+            apply_mh_config(device)
+        except Exception as err:
+            print(
+                "Failed to apply MH config on {device}: {err}".format(
+                    device=device.name, err=str(err)
                 )
-                continue
-    connect_to_all_devices(devices, force=False)
-
-
-def configure_hostname_on_all_devices(devices):
-
-    for device in devices:
-        device.configure(
-            "hostname {hostname}".format(hostname=device.name), prompt_recovery=True
-        )
-    return
+            )
 
 
 def configure_lldp_on_all_devices(devices):

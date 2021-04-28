@@ -12,6 +12,7 @@ COL_IP = 2
 COL_PORT1 = 4
 COL_PORT2 = 5
 COL_TGEN = 6
+COL_MH_CONFIG = 9
 
 
 def download_testbed_excel_file():
@@ -49,7 +50,9 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
     Col A: Router name
     Col B: Router's telnet IP address
     Col D: Telnet console port 1
-    Col E: Telet console port 2
+    Col E: Telnet console port 2
+    Col F: TGEN connections to the router
+    Col I: MH Config
 
     :param ws:
         Excel worksheet object.
@@ -90,6 +93,8 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                         "execute_timeout": 80,
                         "configure_timeout": 65,
                         "abstraction": {"order": ["os"]},
+                        "mh_config": ws.cell(row=row, column=COL_MH_CONFIG).value,
+                        "tgen": ws.cell(row=row, column=COL_TGEN).value,
                     },
                 }
             }
@@ -111,6 +116,8 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                         "execute_timeout": 80,
                         "configure_timeout": 65,
                         "abstraction": {"order": ["os"]},
+                        "mh_config": ws.cell(row=row, column=COL_MH_CONFIG).value,
+                        "tgen": ws.cell(row=row, column=COL_TGEN).value,
                     },
                 }
             }
@@ -121,21 +128,3 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
 def write_yaml_dict_to_yaml_file(source_yaml_dict, dest_filename):
     with open(dest_filename, "w") as outfile:
         yaml.dump(source_yaml_dict, outfile, default_flow_style=False)
-
-
-def add_tgen_info_to_device_objects_from_ws(ws, devices):
-    for row in range(2, 1000):
-        device = ws.cell(row=row, column=COL_ROUTER_NAME).value
-        if device is None:
-            break
-        port = ws.cell(row=row, column=COL_PORT1).value
-        if port is None:
-            continue
-        device_name = device + "_" + str(port)
-        tgen = ws.cell(row=row, column=COL_TGEN).value
-        try:
-            devices[device_name].tgen = str(tgen)
-        except KeyError:
-            print(
-                "{device_name} not found in yaml file".format(device_name=device_name)
-            )

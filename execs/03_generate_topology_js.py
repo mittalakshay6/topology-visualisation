@@ -13,9 +13,6 @@ yaml_file_location = "yaml/testbed.yaml"
 print("Loading the yaml file")
 testbed = load(yaml_file_location)
 
-ws = excel.open_excel_worksheet()
-excel.add_tgen_info_to_device_objects_from_ws(ws, testbed.devices)
-
 with open("./tmp/topology.list", "r") as filehandler:
     topo_list = filehandler.read()
 topo_list = eval(topo_list)
