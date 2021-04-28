@@ -2,9 +2,7 @@
 
 # This script is responsible for preparing the topology dictionary of all the routers in our lab
 
-import logging
 from pprint import pprint
-import time
 import genie.libs.sdk.apis.iosxr.lldp.get as lldp_get
 import genie.libs.sdk.apis.iosxr.running_config.get as run_get
 from genie.libs.sdk.apis.iosxr.lldp import configure

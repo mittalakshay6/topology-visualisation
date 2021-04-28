@@ -6,6 +6,7 @@ from genie.testbed import load
 import sys
 import json
 import pathlib
+import time
 
 sys.path.append(str(pathlib.Path(__file__).parent.parent.absolute()))
 
