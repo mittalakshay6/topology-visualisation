@@ -147,3 +147,4 @@ core.node.*
 *.xlsx
 settings.cfg
 topology_tmp.js
+topology.js
