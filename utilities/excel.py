@@ -6,7 +6,7 @@ from office365.runtime.auth.authentication_context import AuthenticationContext
 from office365.runtime.http.request_options import RequestOptions
 from openpyxl import load_workbook
 
-TESTBED_FILE_LOCAL_NAME = "testbed_tracker_downloaded.xlsx"
+TESTBED_FILE_LOCAL_NAME = "./tmp/testbed_tracker_downloaded.xlsx"
 COL_ROUTER_NAME = 1
 COL_IP = 2
 COL_PORT1 = 4
@@ -29,18 +29,19 @@ def download_testbed_excel_file():
     options = RequestOptions(testbed_file_url)
     ctx_auth.authenticate_request(options)
 
-    req = requests.get(
-        testbed_file_url, headers=options.headers, verify=True, allow_redirects=True
-    )
+    req = requests.get(testbed_file_url,
+                       headers=options.headers,
+                       verify=True,
+                       allow_redirects=True)
     output = open(TESTBED_FILE_LOCAL_NAME, "wb")
     output.write(req.content)
     output.close()
 
 
 def open_excel_worksheet():
-    wb = load_workbook(
-        filename=TESTBED_FILE_LOCAL_NAME, data_only=True, keep_links=False
-    )
+    wb = load_workbook(filename=TESTBED_FILE_LOCAL_NAME,
+                       data_only=True,
+                       keep_links=False)
     ws = wb.active
     return ws
 
@@ -82,24 +83,50 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
             device_dict = {
                 device_name: {
                     "connections": {
-                        "default": {"class": "unicon.Unicon"},
-                        "a": {"ip": ip, "port": port, "protocol": "telnet"},
+                        "default": {
+                            "class": "unicon.Unicon"
+                        },
+                        "a": {
+                            "ip": ip,
+                            "port": port,
+                            "protocol": "telnet"
+                        },
                     },
                     "credentials": {
-                        "default": {"password": "lab123", "username": "lab"},
-                        "alternate0": {"password": "lab123", "username": "root"},
-                        "alternate1": {"password": "test123", "username": "root"},
-                        "alternate2": {"password": "root!lab", "username": "root"},
-                        "alternate3": {"password": "root123", "username": "root1"},
-                        "enable": {"password": "lab123"},
+                        "default": {
+                            "password": "lab123",
+                            "username": "lab"
+                        },
+                        "alternate0": {
+                            "password": "lab123",
+                            "username": "root"
+                        },
+                        "alternate1": {
+                            "password": "test123",
+                            "username": "root"
+                        },
+                        "alternate2": {
+                            "password": "root!lab",
+                            "username": "root"
+                        },
+                        "alternate3": {
+                            "password": "root123",
+                            "username": "root1"
+                        },
+                        "enable": {
+                            "password": "lab123"
+                        },
                     },
                     "os": "iosxr",
                     "type": "router",
                     "custom": {
                         "execute_timeout": 80,
                         "configure_timeout": 65,
-                        "abstraction": {"order": ["os"]},
-                        "mh_config": ws.cell(row=row, column=COL_MH_CONFIG).value,
+                        "abstraction": {
+                            "order": ["os"]
+                        },
+                        "mh_config": ws.cell(row=row,
+                                             column=COL_MH_CONFIG).value,
                         "tgen": ws.cell(row=row, column=COL_TGEN).value,
                     },
                 }
@@ -108,25 +135,55 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
             device_dict = {
                 device_name: {
                     "connections": {
-                        "default": {"class": "unicon.Unicon"},
-                        "a": {"ip": ip, "port": port, "protocol": "telnet"},
-                        "b": {"ip": ip, "port": port2, "protocol": "telnet"},
+                        "default": {
+                            "class": "unicon.Unicon"
+                        },
+                        "a": {
+                            "ip": ip,
+                            "port": port,
+                            "protocol": "telnet"
+                        },
+                        "b": {
+                            "ip": ip,
+                            "port": port2,
+                            "protocol": "telnet"
+                        },
                     },
                     "credentials": {
-                        "default": {"password": "lab123", "username": "lab"},
-                        "alternate0": {"password": "lab123", "username": "root"},
-                        "alternate1": {"password": "test123", "username": "root"},
-                        "alternate2": {"password": "root!lab", "username": "root"},
-                        "alternate3": {"password": "root123", "username": "root1"},
-                        "enable": {"password": "lab123"},
+                        "default": {
+                            "password": "lab123",
+                            "username": "lab"
+                        },
+                        "alternate0": {
+                            "password": "lab123",
+                            "username": "root"
+                        },
+                        "alternate1": {
+                            "password": "test123",
+                            "username": "root"
+                        },
+                        "alternate2": {
+                            "password": "root!lab",
+                            "username": "root"
+                        },
+                        "alternate3": {
+                            "password": "root123",
+                            "username": "root1"
+                        },
+                        "enable": {
+                            "password": "lab123"
+                        },
                     },
                     "os": "iosxr",
                     "type": "router",
                     "custom": {
                         "execute_timeout": 80,
                         "configure_timeout": 65,
-                        "abstraction": {"order": ["os"]},
-                        "mh_config": ws.cell(row=row, column=COL_MH_CONFIG).value,
+                        "abstraction": {
+                            "order": ["os"]
+                        },
+                        "mh_config": ws.cell(row=row,
+                                             column=COL_MH_CONFIG).value,
                         "tgen": ws.cell(row=row, column=COL_TGEN).value,
                     },
                 }
