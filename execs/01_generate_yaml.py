@@ -1,11 +1,14 @@
 import sys
 import pathlib
+import time
 
 sys.path.append(str(pathlib.Path(__file__).parent.parent.absolute()))
 
 from utilities import excel
 
 # TODO: Delete temporary files.
+
+t0 = time.time()
 
 print("{filename}: Start downloading testbed excel sheet.".format(filename=__file__))
 excel.download_testbed_excel_file()
@@ -22,4 +25,7 @@ yaml_dict = excel.construct_testbed_yaml_dict_from_excel_ws(ws)
 print("{filename}: Write yaml dict to yaml file.".format(filename=__file__))
 excel.write_yaml_dict_to_yaml_file(yaml_dict, "yaml/testbed.yaml")
 
-print("SUCCESS !!!")
+t1 = time.time()
+t = t1 - t0
+
+print("SUCCESS !!! (Time taken = {time} sec)".format(time=t))

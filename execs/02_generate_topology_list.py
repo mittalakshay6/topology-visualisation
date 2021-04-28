@@ -23,6 +23,8 @@ def countdown(time_sec):
         time_sec -= 1
 
 
+t0 = time.time()
+
 yaml_file_location = "yaml/testbed.yaml"
 
 pprint("Loading the yaml file")
@@ -70,4 +72,7 @@ print("Write topology list to file.")
 with open("./tmp/topology.list", "w") as filehandler:
     json.dump(topo_list, filehandler)
 
-print("SUCCESS !!!")
+t1 = time.time()
+t = t1 - t0
+
+print("SUCCESS !!! (Time taken = {time} sec".format(time=t))
