@@ -42,11 +42,9 @@ devices = build_device_object_list(testbed)
 
 pprint("Trying to connect to devices")
 devices_success, devices_fail = connect_to_all_devices(devices)
-pprint(
-    "Total: {devices} Success: {success} Fail: {fail}".format(
-        devices=len(devices), success=len(devices_success), fail=len(devices_fail)
-    )
-)
+pprint("Total: {devices} Success: {success} Fail: {fail}".format(
+    devices=len(devices), success=len(devices_success),
+    fail=len(devices_fail)))
 pprint("Success:")
 pprint(devices_success)
 pprint("Fail:")
@@ -84,8 +82,5 @@ t1 = time.time()
 t = t1 - t0
 ty_res = time.gmtime(t)
 res = time.strftime("%M:%S", ty_res)
-print(
-    "SUCCESS !!! (Time taken = {min} min and {sec} seconds)".format(
-        min=res.split(":")[0], sec=res.split(":")[1]
-    )
-)
+print("SUCCESS !!! (Time taken = {min} min and {sec} seconds)".format(
+    min=res.split(":")[0], sec=res.split(":")[1]))
