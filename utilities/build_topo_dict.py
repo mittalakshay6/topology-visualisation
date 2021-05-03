@@ -303,7 +303,7 @@ def commit_replace_hostname_config_all_async(devices):
 def apply_mh_config(device):
     try:
         pprint("Applying MH Config on {device}".format(device=device.name))
-        device.configure(device.custom.mh_config)
+        device.configure(device.custom.mh_config, prompt_recovery=True)
     except Exception as err:
         pprint("Failed to apply MH config on {device}: {err}".format(
             device=device.name, err=str(err)))
@@ -386,6 +386,17 @@ def update_lldp_info_dict(device, lldp_info_dict):
         pprint(
             "Failed to get lldp neighbour info from device {device} : {err}".
             format(device=device.name, err=str(err)))
+
+
+def build_no_link_dict(lldp_info_dict, devices_fail):
+    no_link_dict = {}
+    for device_name in lldp_info_dict.keys():
+        lldp_info = lldp_info_dict[device_name]
+        if not lldp_info["total_entries"]:
+            no_link_dict[device_name] = "standalone"
+    for device in devices_fail:
+        no_link_dict[device.name] = "dead"
+    return no_link_dict
 
 
 def build_lldp_info_dict_async(devices):

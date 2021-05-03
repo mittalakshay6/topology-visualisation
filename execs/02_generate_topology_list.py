@@ -71,11 +71,15 @@ disconnect_from_all_devices_async(devices_success)
 
 print("Build topology list")
 topo_list = build_topology_list_from_lldp_info(lldp_info_dict)
+no_link_dict = build_no_link_dict(lldp_info_dict, devices_fail)
 
 print("Write topology list to file.")
 # Write topology list to file.
 with open("./tmp/topology.list", "w") as filehandler:
     json.dump(topo_list, filehandler)
+
+with open("./tmp/no_link.dict", "w") as filehandler:
+    json.dump(no_link_dict, filehandler)
 
 t1 = time.time()
 t = t1 - t0

@@ -28,7 +28,12 @@ testbed = load(yaml_file_location)
 with open("./tmp/topology.list", "r") as filehandler:
     topo_list = filehandler.read()
 topo_list = eval(topo_list)
-topology_json = build_topology_json_dict(topo_list, testbed.devices)
+with open("./tmp/no_link.dict", "r") as filehandler:
+    no_link_dict = filehandler.read()
+no_link_dict = eval(no_link_dict)
+topology_json = build_topology_json_dict(topology_list=topo_list,
+                                         no_link_dict=no_link_dict,
+                                         devices=testbed.devices)
 
 write_topology_file(topology_json)
 print("Topology.js file created.")
