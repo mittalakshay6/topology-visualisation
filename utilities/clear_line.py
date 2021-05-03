@@ -28,6 +28,6 @@ def clear_line(host, port):
 
         tn.write(b"exit\n")
         tn.read_all()
-    except EOFError:
-        print("Clear line has failed for {host}:{port}".format(
-            host=host, port=port))
+    except EOFError as err:
+        print("Clear line has failed for {host}:{port} | {err} ".format(
+            host=host, port=port, err=str(err)))
