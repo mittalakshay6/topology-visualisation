@@ -1,8 +1,6 @@
 #!/usr/local/bin/python3.8
 
 import json
-from os import EX_CANTCREAT
-from typing import no_type_check
 
 OUTPUT_TOPOLOGY_FILENAME = "topology.js"
 TOPOLOGY_FILE_HEAD = "\n\nvar topologyData = "
@@ -37,7 +35,7 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
                 "telnetIP": localip,
                 "telnetPort": localport,
                 "icon": icon,
-                "tgen": str(tgen),
+                "tgen": tgen,
             })
             host_id += 1
     for tuple in topology_list:
@@ -60,7 +58,7 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
                 "telnetIP": localip,
                 "telnetPort": localport,
                 "icon": "router",
-                "tgen": str(tgen),
+                "tgen": tgen,
             })
             host_id += 1
         if host_id_map.get(remote_name) == None:

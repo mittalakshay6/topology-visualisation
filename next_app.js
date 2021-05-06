@@ -25,6 +25,10 @@
         if (model._data.is_new === "yes") {
           return "#148D09";
         }
+        // console.log(model);
+        if (model._data.tgen !== "None") {
+          return "#F66704";
+        }
       },
     },
     // Node Set settings (for future use)
@@ -230,19 +234,6 @@
                 style: "font-size:80%;",
               },
             },
-            //  {
-            //     tag: 'p',
-            //     content: [{
-            //         tag: 'label',
-            //         content: 'S/N: ',
-            //     }, {
-            //         tag: 'label',
-            //         content: '{#node.model.serial_number}',
-            //     }],
-            //     props: {
-            //         "style": "font-size:80%; padding:0"
-            //     }
-            // },
           ],
           props: {
             style: "width: 150px;",
