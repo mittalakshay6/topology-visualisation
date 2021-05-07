@@ -234,6 +234,22 @@
                 style: "font-size:80%;",
               },
             },
+            {
+              tag: "p",
+              content: [
+                {
+                  tag: "label",
+                  content: "Project: ",
+                },
+                {
+                  tag: "label",
+                  content: "{#node.model.project}",
+                },
+              ],
+              props: {
+                style: "font-size:80%;",
+              },
+            },
           ],
           props: {
             style: "width: 150px;",

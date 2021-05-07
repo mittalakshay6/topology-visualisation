@@ -13,6 +13,7 @@ COL_PORT1 = 4
 COL_PORT2 = 5
 COL_TGEN = 6
 COL_MH_CONFIG = 9
+COL_PROJECT = 11
 
 
 def download_testbed_excel_file():
@@ -56,6 +57,7 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
     Col E: Telnet console port 2
     Col F: TGEN connections to the router
     Col I: MH Config
+    Col K: Project name
 
     :param ws:
         Excel worksheet object.
@@ -128,6 +130,7 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                         "mh_config": ws.cell(row=row,
                                              column=COL_MH_CONFIG).value,
                         "tgen": ws.cell(row=row, column=COL_TGEN).value,
+                        "project": ws.cell(row=row, column=COL_PROJECT).value,
                     },
                 }
             }
@@ -185,6 +188,7 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
                         "mh_config": ws.cell(row=row,
                                              column=COL_MH_CONFIG).value,
                         "tgen": ws.cell(row=row, column=COL_TGEN).value,
+                        "project": ws.cell(row=row, column=COL_PROJECT).value,
                     },
                 }
             }

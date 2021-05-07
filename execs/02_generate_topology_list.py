@@ -49,8 +49,10 @@ pprint(devices_success)
 pprint("Fail:")
 pprint(devices_fail)
 
+pprint("Saving running configs")
 save_running_config_on_all_devices_async(devices_success)
 
+pprint("Commit replace and hostname config")
 commit_replace_hostname_config_all_async(devices_success)
 
 apply_mh_config_all_async(devices_success)

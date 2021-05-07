@@ -5,8 +5,6 @@ import json
 OUTPUT_TOPOLOGY_FILENAME = "topology.js"
 TOPOLOGY_FILE_HEAD = "\n\nvar topologyData = "
 
-# TODO: Add more info, telnet IP and port in topology.js
-
 
 def build_topology_json_dict(topology_list, no_link_dict, devices):
 
@@ -27,6 +25,7 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             except KeyError:
                 localport = None
             tgen = devices[device_name].custom.tgen
+            project = devices[device_name].custom.project
             icon = "dead_node" if no_link_dict[
                 device_name] == "dead" else "router"
             topology_dict["nodes"].append({
@@ -35,7 +34,8 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
                 "telnetIP": localip,
                 "telnetPort": localport,
                 "icon": icon,
-                "tgen": tgen,
+                "tgen": str(tgen),
+                "project": str(project)
             })
             host_id += 1
     for tuple in topology_list:
@@ -52,13 +52,15 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             except KeyError:
                 localport = None
             tgen = devices[local_name].custom.tgen
+            project = devices[local_name].custom.project
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": local_name,
                 "telnetIP": localip,
                 "telnetPort": localport,
                 "icon": "router",
-                "tgen": tgen,
+                "tgen": str(tgen),
+                "project": str(project)
             })
             host_id += 1
         if host_id_map.get(remote_name) == None:
@@ -72,13 +74,15 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             except KeyError:
                 remoteport = None
             tgen = devices[remote_name].custom.tgen
+            project = devices[remote_name].custom.project
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": remote_name,
                 "telnetIP": remoteip,
                 "telnetPort": remoteport,
                 "icon": "router",
-                "tgen": tgen,
+                "tgen": str(tgen),
+                "project": str(project)
             })
             host_id += 1
 
