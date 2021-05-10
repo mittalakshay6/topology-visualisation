@@ -194,6 +194,7 @@ def save_running_config(device):
         except Exception as e:
             pprint("Cannot save running-config on {device}: {e}".format(
                 e=str(e), device=device.name))
+            break
         # Copy in progress...
         # pprint(output)
         if "[OK]" in output or "Copy complete" in output:

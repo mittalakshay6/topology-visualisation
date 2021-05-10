@@ -148,3 +148,4 @@ core.node.*
 settings.cfg
 topology.js
 node_modules
+tmp

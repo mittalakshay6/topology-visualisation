@@ -17,10 +17,11 @@ import time
 sys.path.append(str(pathlib.Path(__file__).parent.parent.absolute()))
 
 from utilities.generate_topology import build_topology_json_dict, write_topology_file
+from utilities import misc
 
 t0 = time.time()
 
-yaml_file_location = "yaml/testbed.yaml"
+yaml_file_location = "tmp/testbed.yaml"
 
 print("Loading the yaml file")
 testbed = load(yaml_file_location)
@@ -34,7 +35,7 @@ no_link_dict = eval(no_link_dict)
 topology_json = build_topology_json_dict(topology_list=topo_list,
                                          no_link_dict=no_link_dict,
                                          devices=testbed.devices)
-
+misc.create_dir("./static/generated")
 write_topology_file(topology_json)
 print("Topology.js file created.")
 

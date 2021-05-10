@@ -15,9 +15,11 @@ import time
 sys.path.append(str(pathlib.Path(__file__).parent.parent.absolute()))
 
 from utilities import excel
+from utilities import misc
 
 t0 = time.time()
 
+misc.create_dir("./tmp")
 print("{filename}: Start downloading testbed excel sheet.".format(
     filename=__file__))
 excel.download_testbed_excel_file()
@@ -31,7 +33,7 @@ print("{filename}: Construct yaml dict.".format(filename=__file__))
 yaml_dict = excel.construct_testbed_yaml_dict_from_excel_ws(ws)
 
 print("{filename}: Write yaml dict to yaml file.".format(filename=__file__))
-excel.write_yaml_dict_to_yaml_file(yaml_dict, "yaml/testbed.yaml")
+excel.write_yaml_dict_to_yaml_file(yaml_dict, "tmp/testbed.yaml")
 
 t1 = time.time()
 t = t1 - t0

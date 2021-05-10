@@ -33,7 +33,7 @@ def countdown(time_sec):
 
 t0 = time.time()
 
-yaml_file_location = "yaml/testbed.yaml"
+yaml_file_location = "tmp/testbed.yaml"
 
 pprint("Loading the yaml file")
 testbed = load(yaml_file_location)

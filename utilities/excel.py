@@ -63,8 +63,8 @@ def construct_device_name(ws, row):
             device_name = device + "_" + str(port)
             if ws.cell(row=row, column=COL_PORT2).value is not None:
                 port2 = ws.cell(row=row, column=COL_PORT2).value
-                # device_name += "_"
-                # device_name += str(port2)
+                device_name += "_"
+                device_name += str(port2)
     return device_name, port, port2
 
 

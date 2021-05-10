@@ -4,8 +4,8 @@ import json
 from datetime import datetime
 from utilities import excel
 
-OUTPUT_TOPOLOGY_FILENAME = "topology.js"
-OUTPUT_NODE_RESERVATION_FILENAME = "node_reservation.js"
+OUTPUT_TOPOLOGY_FILENAME = "static/generated/topology.js"
+OUTPUT_NODE_RESERVATION_FILENAME = "static/generated/node_reservation.js"
 TOPOLOGY_FILE_TIME_VAR = "\n\ntopology_timestamp = "
 TOPOLOGY_FILE_HEAD = "\n\nvar topologyData = "
 NODE_RESERVATION_FILE_HEAD = "\n\nvar nodeReservationData = "
@@ -78,15 +78,12 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             host_id_map[remote_name] = host_id
             try:
                 remoteip = str(devices[remote_name].connections.a.ip)
-            except KeyError:
-                remoteip = None
-            try:
+                tgen = devices[remote_name].custom.tgen
+                icon = "nexus5000" if tgen else "router"
+                project = devices[remote_name].custom.project
                 remoteport = devices[remote_name].connections.a.port
             except KeyError:
-                remoteport = None
-            tgen = devices[remote_name].custom.tgen
-            icon = "nexus5000" if tgen else "router"
-            project = devices[remote_name].custom.project
+                continue
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": remote_name,
