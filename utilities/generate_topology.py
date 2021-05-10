@@ -1,9 +1,15 @@
 #!/usr/local/bin/python3.8
 
 import json
+from datetime import datetime
+from utilities import excel
 
 OUTPUT_TOPOLOGY_FILENAME = "topology.js"
+OUTPUT_NODE_RESERVATION_FILENAME = "node_reservation.js"
+TOPOLOGY_FILE_TIME_VAR = "\n\ntopology_timestamp = "
 TOPOLOGY_FILE_HEAD = "\n\nvar topologyData = "
+NODE_RESERVATION_FILE_HEAD = "\n\nvar nodeReservationData = "
+NODE_RESERVATION_FILE_TIME_VAR = "\n\nvar reservation_timestamp = "
 
 
 def build_topology_json_dict(topology_list, no_link_dict, devices):
@@ -26,8 +32,12 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
                 localport = None
             tgen = devices[device_name].custom.tgen
             project = devices[device_name].custom.project
-            icon = "dead_node" if no_link_dict[
-                device_name] == "dead" else "router"
+            if no_link_dict[device_name] == "dead":
+                icon = "dead_node"
+            elif tgen is None:
+                icon = "router"
+            else:
+                icon = "nexus5000"
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": device_name,
@@ -52,13 +62,14 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             except KeyError:
                 localport = None
             tgen = devices[local_name].custom.tgen
+            icon = "nexus5000" if tgen else "router"
             project = devices[local_name].custom.project
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": local_name,
                 "telnetIP": localip,
                 "telnetPort": localport,
-                "icon": "router",
+                "icon": icon,
                 "tgen": str(tgen),
                 "project": str(project)
             })
@@ -74,13 +85,14 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             except KeyError:
                 remoteport = None
             tgen = devices[remote_name].custom.tgen
+            icon = "nexus5000" if tgen else "router"
             project = devices[remote_name].custom.project
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": remote_name,
                 "telnetIP": remoteip,
                 "telnetPort": remoteport,
-                "icon": "router",
+                "icon": icon,
                 "tgen": str(tgen),
                 "project": str(project)
             })
@@ -108,10 +120,44 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
 
 def write_topology_file(topology_json,
                         header=TOPOLOGY_FILE_HEAD,
-                        dst=OUTPUT_TOPOLOGY_FILENAME):
+                        dst=OUTPUT_TOPOLOGY_FILENAME,
+                        timestamp_head=TOPOLOGY_FILE_TIME_VAR):
 
+    now = datetime.now()
+    dt_string = now.strftime("%d/%b/%Y %H:%M:%S")
     with open(dst, "w") as topology_file:
         topology_file.write(header)
         topology_file.write(json.dumps(topology_json, indent=4,
                                        sort_keys=True))
         topology_file.write(";")
+        topology_file.write(timestamp_head)
+        topology_file.write("\"" + dt_string + "\"")
+
+
+def build_node_reservation_dict(ws):
+    reservation_dict = {}
+    for row in range(2, 9999):
+        device_name, _, _ = excel.construct_device_name(ws, row)
+        if device_name == "continue":
+            continue
+        elif device_name == "break":
+            break
+        status = excel.get_reservation_status(ws, row)
+        reservation_dict[device_name] = str(status)
+    return reservation_dict
+
+
+def write_node_reservation_file(node_reservation_dict,
+                                header=NODE_RESERVATION_FILE_HEAD,
+                                dst=OUTPUT_NODE_RESERVATION_FILENAME,
+                                timestamp_head=NODE_RESERVATION_FILE_TIME_VAR):
+
+    now = datetime.now()
+    dt_string = now.strftime("%d/%b/%Y %H:%M:%S")
+    with open(dst, "w") as node_reservation_file:
+        node_reservation_file.write(header)
+        node_reservation_file.write(
+            json.dumps(node_reservation_dict, indent=4, sort_keys=True))
+        node_reservation_file.write(";")
+        node_reservation_file.write(timestamp_head)
+        node_reservation_file.write("\"" + dt_string + "\"")

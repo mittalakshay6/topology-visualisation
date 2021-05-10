@@ -14,6 +14,7 @@ COL_PORT2 = 5
 COL_TGEN = 6
 COL_MH_CONFIG = 9
 COL_PROJECT = 11
+COL_RESERVATION_STATUS = 12
 
 
 def download_testbed_excel_file():
@@ -47,6 +48,30 @@ def open_excel_worksheet():
     return ws
 
 
+def construct_device_name(ws, row):
+    device = ws.cell(row=row, column=COL_ROUTER_NAME).value
+    port2 = None
+    port = None
+    device_name = ""
+    if device is None:
+        device_name = "break"
+    else:
+        port = ws.cell(row=row, column=COL_PORT1).value
+        if port is None:
+            device_name = "continue"
+        else:
+            device_name = device + "_" + str(port)
+            if ws.cell(row=row, column=COL_PORT2).value is not None:
+                port2 = ws.cell(row=row, column=COL_PORT2).value
+                # device_name += "_"
+                # device_name += str(port2)
+    return device_name, port, port2
+
+
+def get_reservation_status(ws, row):
+    return ws.cell(row=row, column=COL_RESERVATION_STATUS).value
+
+
 def construct_testbed_yaml_dict_from_excel_ws(ws):
     """
     Construct a dict from the excel worksheet object. This function assumes the
@@ -68,16 +93,11 @@ def construct_testbed_yaml_dict_from_excel_ws(ws):
 
     yaml_dict = {"devices": {}}
     for row in range(2, 1000):
-        device = ws.cell(row=row, column=COL_ROUTER_NAME).value
-        if device is None:
+        device_name, port, port2 = construct_device_name(ws, row)
+        if device_name == "break":
             break
-        port = ws.cell(row=row, column=COL_PORT1).value
-        if port is None:
+        elif device_name == "continue":
             continue
-        device_name = device + "_" + str(port)
-        port2 = None
-        if ws.cell(row=row, column=COL_PORT2).value is not None:
-            port2 = ws.cell(row=row, column=COL_PORT2).value
         ip = ws.cell(row=row, column=COL_IP).value
         if ip is None:
             continue

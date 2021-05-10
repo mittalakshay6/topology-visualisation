@@ -1,0 +1,27 @@
+{
+  "name": "show_topology",
+  "version": "1.0.0",
+  "description": "Topology visualisation tool",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-server": "^0.12.3",
+    "n": "^7.2.2",
+    "npm": "^7.12.0",
+    "python-shell": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://wwwin-github.cisco.com/akshmitt/show_topology.git"
+  },
+  "keywords": [
+    "topology",
+    "visualisation"
+  ],
+  "author": "Akshay Mittal",
+  "license": "ISC"
+}

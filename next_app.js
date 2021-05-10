@@ -22,12 +22,15 @@
       label: "model.name",
       iconType: "model.icon",
       color: function (model) {
-        if (model._data.is_new === "yes") {
-          return "#148D09";
+        status = nodeReservationData[model._data.name]
+        if (status === "None" || status === "FREE"){
+          return "#42c960";
         }
-        // console.log(model);
-        if (model._data.tgen !== "None") {
-          return "#F66704";
+        else if (status === "ETA EXPIRED") {
+          return "#ebd217";
+        }
+        else if (status === "OCCUPIED") {
+          return "#d92800";
         }
       },
     },
@@ -371,6 +374,15 @@
     topo.activateLayout("hierarchicalLayout");
   };
 
+  update_reservations = async function() {
+    topo.showLoading()
+    const request = fetch("/update")
+    update_btn = document.getElementById("update-btn")
+    update_btn.innerHTML = "Loading..."
+    request.then((response)=>{
+      return response.text()
+    }).then(()=>{window.location.reload()})
+  }
   // Create an application instance
   var shell = new Shell();
   // Run the application

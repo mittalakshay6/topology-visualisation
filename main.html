@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="next_sources/css/next.css">
-        <link rel="stylesheet" href="styles_main_page.css">
-        <script src="next_sources/js/next.js"></script>
-        <script src="topology.js"></script>
-        <script src="next_app.js"></script>
-    </head>
-    <body>
-        <a href="main.html"><button>Refresh Autolayout</button></a>
-        <button onclick='horizontal()'>Horizontal Layout</button>
-        <button onclick="vertical()">Vertical Layout</button>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="next_sources/css/next.css">
+    <link rel="stylesheet" href="styles_main_page.css">
+    <script src="next_sources/js/next.js"></script>
+    <script src="topology.js"></script>
+    <script src="node_reservation.js"></script>
+    <script src="next_app.js"></script>
+</head>
+
+<body>
+    <b>Topology last Updated: </b>
+    <script type="text/javascript">document.write(topology_timestamp)</script>
+    <br>
+    <b>Reservations last Updated: </b>
+    <script type="text/javascript">document.write(reservation_timestamp)</script>
+    <button onclick="update_reservations()" id="update-btn">Update reservations</button>
+</body>
+
 </html>
-
-
