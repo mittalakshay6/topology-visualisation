@@ -233,6 +233,7 @@ def save_running_config_on_all_devices_async(devices):
 def restore_running_config_on_device(device, retry=True):
     pprint("Restoring running config on {device}".format(device=device.name))
     try:
+        device.execute("terminal length 30")
         device.state_machine.hostname = device.old_hostname
         if device.old_hostname == "ios":
             device.configure("no hostname", prompt_recovery=True)
