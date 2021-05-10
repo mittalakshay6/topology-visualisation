@@ -146,5 +146,5 @@ core.node.*
 # Project specific files to be ignored
 *.xlsx
 settings.cfg
-topology_tmp.js
 topology.js
+node_modules
