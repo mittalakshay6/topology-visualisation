@@ -12,6 +12,10 @@ NODE_RESERVATION_FILE_HEAD = "\n\nvar nodeReservationData = "
 NODE_RESERVATION_FILE_TIME_VAR = "\n\nvar reservation_timestamp = "
 
 
+def is_valid_device(device_name, devices):
+    return device_name in devices.keys()
+
+
 def build_topology_json_dict(topology_list, no_link_dict, devices):
 
     host_id = 0
@@ -20,16 +24,12 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
 
     # Generate topology JSON dict
     for device_name in no_link_dict.keys():
+        if (not is_valid_device(device_name=device_name, devices=devices)):
+            continue
         if host_id_map.get(device_name) == None:
             host_id_map[device_name] = host_id
-            try:
-                localip = str(devices[device_name].connections.a.ip)
-            except KeyError:
-                localip = None
-            try:
-                localport = devices[device_name].connections.a.port
-            except KeyError:
-                localport = None
+            localip = str(devices[device_name].connections.a.ip)
+            localport = devices[device_name].connections.a.port
             tgen = devices[device_name].custom.tgen
             project = devices[device_name].custom.project
             if no_link_dict[device_name] == "dead":
@@ -51,16 +51,13 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
     for tuple in topology_list:
         local_name = tuple[0][0]
         remote_name = tuple[1][0]
+        if (not is_valid_device(local_name, devices)
+                or not is_valid_device(remote_name, devices)):
+            continue
         if host_id_map.get(local_name) == None:
             host_id_map[local_name] = host_id
-            try:
-                localip = str(devices[local_name].connections.a.ip)
-            except KeyError:
-                localip = None
-            try:
-                localport = devices[local_name].connections.a.port
-            except KeyError:
-                localport = None
+            localip = str(devices[local_name].connections.a.ip)
+            localport = devices[local_name].connections.a.port
             tgen = devices[local_name].custom.tgen
             icon = "nexus5000" if tgen else "router"
             project = devices[local_name].custom.project
@@ -76,14 +73,11 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
             host_id += 1
         if host_id_map.get(remote_name) == None:
             host_id_map[remote_name] = host_id
-            try:
-                remoteip = str(devices[remote_name].connections.a.ip)
-                tgen = devices[remote_name].custom.tgen
-                icon = "nexus5000" if tgen else "router"
-                project = devices[remote_name].custom.project
-                remoteport = devices[remote_name].connections.a.port
-            except KeyError:
-                continue
+            remoteip = str(devices[remote_name].connections.a.ip)
+            tgen = devices[remote_name].custom.tgen
+            icon = "nexus5000" if tgen else "router"
+            project = devices[remote_name].custom.project
+            remoteport = devices[remote_name].connections.a.port
             topology_dict["nodes"].append({
                 "id": host_id,
                 "name": remote_name,
@@ -101,6 +95,9 @@ def build_topology_json_dict(topology_list, no_link_dict, devices):
         local_intf = tuple[0][1]
         remote_name = tuple[1][0]
         remote_intf = tuple[1][1]
+        if (not is_valid_device(local_name, devices)
+                or not is_valid_device(remote_name, devices)):
+            continue
         topology_dict["links"].append({
             "id": link_id,
             "source": host_id_map[local_name],
