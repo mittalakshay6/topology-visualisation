@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://wwwin-github.cisco.com/akshmitt/show_topology.git"
+    "url": "https://cto-github.cisco.com/topology/show_topology.git"
   },
   "keywords": [
     "topology",
