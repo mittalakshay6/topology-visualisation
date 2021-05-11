@@ -1,6 +1,6 @@
 # Show Topology
 
->Created with <3 by **Akshay Mittal** in India :india:
+>Created with :heart: by **Akshay Mittal** in India :india:
 
 ## Acknowledgement
 
@@ -8,7 +8,7 @@ I would like to thank **Rohit Kumar Gupta (rohigupt)**, who sowed the seed in my
 
 ## Why? (Problem statement)
 
-- ### <u>Static topology diagrams</u>
+- ### Static topology diagrams
 
 Teams have a certain set of routers and their topologies. The topology diagrams are **maintained manually**.
 
@@ -24,7 +24,7 @@ For example:
 
 - These topology diagrams are independent of one another. Since, the connections are made by many engineers, there is a high probability of **connections being present across topologies and not being documented**.
 
-- ### <u>Router state</u>
+- ### Router state
 
 These diagrams show **no information about the state of the routers**.
 
@@ -225,4 +225,4 @@ Enhancements can be limitless. I have documented some I could think of:
 - [ ] Add support to dyamically identify TGEN interfaces instead of depending on static information from testbed excel sheet.
 
 ---
-<3 :india:
+:heart: :india:
