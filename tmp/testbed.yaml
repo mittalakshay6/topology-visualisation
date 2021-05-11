@@ -1,0 +1,1091 @@
+devices:
+  Arches_2013:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2013
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: null
+      tgen: Te0/0/0/16<->sp 1/4
+    os: iosxr
+    type: router
+  Bigbend_2017:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2017
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: BundlePindown/automation
+      tgen: null
+    os: iosxr
+    type: router
+  Bigbend_2020:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2020
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: KDDI EVPN
+      tgen: null
+    os: iosxr
+    type: router
+  Bigbend_2021:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2021
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: 'DDC: AT&T Xleaf'
+      tgen: Port 32
+    os: iosxr
+    type: router
+  DDC_2025:
+    connections:
+      a:
+        ip: 10.64.103.90
+        port: 2025
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: null
+      tgen: null
+    os: iosxr
+    type: router
+  Darwin_2024:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2024
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: 2027
+      tgen: spirent Port 1/2
+    os: iosxr
+    type: router
+  Eyrie_2023:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2023
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: null
+      tgen: Port 2/15
+    os: iosxr
+    type: router
+  J2_modular_2028:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2028
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: "controller Optics0/1/0/0\n breakout 4x10\n!\ncontroller Optics0/4/0/2\n\
+        \ breakout 4x10\n!\ncontroller Optics0/4/0/29\n breakout 4x10\n!"
+      project: mvpn p0 topology
+      tgen: null
+    os: iosxr
+    type: router
+  J_Modular_2015_2016:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2015
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2016
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: "controller Optics0/3/0/35\n breakout 4x10\n!"
+      project: mvpn p0 topology
+      tgen: Port 8
+    os: iosxr
+    type: router
+  Pyke_2006:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2006
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Dual SLC
+      tgen: null
+    os: iosxr
+    type: router
+  Pyke_2007:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2007
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: KDDI EVPN
+      tgen: null
+    os: iosxr
+    type: router
+  RSP4_2002_2003:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2002
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2003
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Jarvis-v2
+      tgen: Port 33,34
+    os: iosxr
+    type: router
+  RSP4_2032:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2032
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: mvpn p0 topology
+      tgen: Port 34,35
+    os: iosxr
+    type: router
+  RSP4_2034_2035:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2034
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2035
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: BundlePindown/automation/EPRS
+      tgen: null
+    os: iosxr
+    type: router
+  RSP4_2039:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2039
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: 'MoGRE '
+      tgen: Port 17,18
+    os: iosxr
+    type: router
+  RSP4_2040_2041:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2040
+        protocol: telnet
+      b:
+        ip: 10.64.103.82
+        port: 2041
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: RSP4 setup
+      tgen: Port 19,20
+    os: iosxr
+    type: router
+  Taihu_2027:
+    connections:
+      a:
+        ip: 10.64.103.90
+        port: 2027
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Jarvis-v1/RJIL
+      tgen: Port 15
+    os: iosxr
+    type: router
+  Tortin_2005:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2005
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: ERPS/Automation
+      tgen: Te0/0/1/0/1<->sp 1/3
+    os: iosxr
+    type: router
+  Tortin_2008:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2008
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: MOGRE
+      tgen: null
+    os: iosxr
+    type: router
+  Tortin_2009:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2009
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: KDDI EVPN
+      tgen: Port 9
+    os: iosxr
+    type: router
+  Tortin_2011:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2011
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: RJIL/MOGRE/ERPS
+      tgen: Port 17,18
+    os: iosxr
+    type: router
+  Tortin_2012:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2012
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Jarvis-v1/RJIL
+      tgen: Port 13,14
+    os: iosxr
+    type: router
+  Tortin_2018:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2018
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: 'DDC: AT&T Xleaf'
+      tgen: null
+    os: iosxr
+    type: router
+  Tortin_2019:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2019
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: KDDI EVPN
+      tgen: null
+    os: iosxr
+    type: router
+  Turin_2004:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2004
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: KDDI EVPN
+      tgen: Port 10, 11
+    os: iosxr
+    type: router
+  Turin_2014:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2014
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: MoGRE/RJIL
+      tgen: Port 16,28
+    os: iosxr
+    type: router
+  UFI_2025:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2025
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Dual SLC
+      tgen: null
+    os: iosxr
+    type: router
+  UFI_2_2022:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2022
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: Dual SLC
+      tgen: null
+    os: iosxr
+    type: router
+  Zermatt_2010:
+    connections:
+      a:
+        ip: 10.64.103.82
+        port: 2010
+        protocol: telnet
+      default:
+        class: unicon.Unicon
+    credentials:
+      alternate0:
+        password: lab123
+        username: root
+      alternate1:
+        password: test123
+        username: root
+      alternate2:
+        password: root!lab
+        username: root
+      alternate3:
+        password: root123
+        username: root1
+      default:
+        password: lab123
+        username: lab
+      enable:
+        password: lab123
+    custom:
+      abstraction:
+        order:
+        - os
+      configure_timeout: 65
+      execute_timeout: 80
+      mh_config: null
+      project: standalone
+      tgen: null
+    os: iosxr
+    type: router
