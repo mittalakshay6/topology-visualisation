@@ -149,3 +149,4 @@ settings.cfg
 topology.js
 node_modules
 tmp
+static/generated/*
