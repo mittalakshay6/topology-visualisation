@@ -24,13 +24,13 @@
       color: function (model) {
         status = nodeReservationData[model._data.name]
         if (status === "None" || status === "FREE"){
-          return "#42c960";
+          return "#077d0d";
         }
         else if (status === "ETA EXPIRED") {
-          return "#ebd217";
+          return "#b8ae07";
         }
         else if (status === "OCCUPIED") {
-          return "#d92800";
+          return "#a12500";
         }
       },
     },

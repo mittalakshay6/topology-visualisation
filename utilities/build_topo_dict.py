@@ -8,16 +8,10 @@ from pprint import pprint
 import genie.libs.sdk.apis.iosxr.lldp.get as lldp_get
 import genie.libs.sdk.apis.iosxr.running_config.get as run_get
 from genie.libs.sdk.apis.iosxr.lldp import configure
-from genie.testbed import load
 from utilities.clear_line import clear_line
 from unicon.eal.dialogs import Statement, Dialog
 from genie.utils.timeout import Timeout
 from genie.libs.sdk.apis.iosxr.running_config.configure import restore_running_config
-
-# TODO: Think about breakout interfaces. One possible solution is to not do commit replace, rather get the list of all the interfaces (v4, v6, vrf), and unshut them.
-# TODO: Study and implement logger here and replace with all pprint statements.
-# TODO: Document generation from doc strings.
-# TODO: Implement concurrency for possible parallel operations on the routers.
 
 login_creds = [
     "default", "alternate0", "alternate1", "alternate2", "alternate3"
@@ -35,27 +29,21 @@ def clear_line_by_device_object(device):
     # pprint("Clear line for device {device}".format(device=device.name))
     try:
         clear_line(str(device.connections.a.ip), device.connections.a.port)
-    except EOFError as err:
-        pprint(
-            "Failed to clear line for {device} at {ip}:{port}, Reason: {reason}"
-            .format(
-                device=device.name,
-                ip=device.connections.a.ip,
-                port=device.connections.a.port,
-                reason=str(err),
-            ))
+    except EOFError:
+        pprint("Failed to clear line for {device} at {ip}:{port}".format(
+            device=device.name,
+            ip=device.connections.a.ip,
+            port=device.connections.a.port,
+        ))
     try:
         clear_line(str(device.connections.b.ip), device.connections.b.port)
-    except EOFError as err:
-        pprint(
-            "Failed to clear line for {device} at {ip}:{port}, Reason: {reason}"
-            .format(
-                device=device.name,
-                ip=device.connections.b.ip,
-                port=device.connections.b.port,
-                reason=str(err),
-            ))
-    except AttributeError as err:
+    except EOFError:
+        pprint("Failed to clear line for {device} at {ip}:{port}".format(
+            device=device.name,
+            ip=device.connections.b.ip,
+            port=device.connections.b.port,
+        ))
+    except AttributeError:
         pass
 
 
@@ -136,21 +124,22 @@ def connect_to_all_devices(testbed, force=True):
 
 def disconnect_from_all_devices(devices):
     for device in devices:
-        pprint("Disconnecting from device {device}".format(device=device.name))
         try:
+            pprint("Disconnecting from device {device}".format(
+                device=device.name))
             device.destroy()
-        except Exception as err:
-            pprint("Failed to disconnect from device {device} : {err}".format(
-                device=device, err=str(err)))
+        except Exception:
+            pprint("Failed to disconnect from device {device}".format(
+                device=device))
 
 
 def disconnect_from_device(device):
-    pprint("Disconnecting from device {device}".format(device=device.name))
     try:
         device.destroy()
-    except Exception as err:
-        pprint("Failed to disconnect from device {device} : {err}".format(
-            device=device, err=str(err)))
+        pprint("Disconnected from device {device}".format(device=device.name))
+    except Exception:
+        pprint(
+            "Failed to disconnect from device {device}".format(device=device))
 
 
 def disconnect_from_all_devices_async(devices):
@@ -214,9 +203,9 @@ def save_running_config_on_all_devices(devices):
     for device in devices:
         try:
             save_running_config(device)
-        except Exception as err:
-            pprint("Failed to save running config on device {device} : {err}".
-                   format(device=device.name, err=str(err)))
+        except Exception:
+            pprint("Failed to save running config on device {device}".format(
+                device=device.name))
     pprint("Done saving running configs for devices")
 
 
@@ -232,7 +221,6 @@ def save_running_config_on_all_devices_async(devices):
 
 
 def restore_running_config_on_device(device, retry=True):
-    pprint("Restoring running config on {device}".format(device=device.name))
     try:
         device.execute("terminal length 30")
         device.state_machine.hostname = device.old_hostname
@@ -246,9 +234,11 @@ def restore_running_config_on_device(device, retry=True):
             )
         restore_running_config(device, "harddisk:/",
                                "show_topology_run_config.conf")
-    except Exception as err:
-        pprint("Failed to restore running config on device {device} : {err}".
-               format(device=device.name, err=str(err)))
+        pprint(
+            "Restored running config on {device}".format(device=device.name))
+    except Exception:
+        pprint("Failed to restore running config on device {device}".format(
+            device=device.name))
         device.destroy()
         device.connect(prompt_recovery=True,
                        learn_hostname=True,
@@ -279,8 +269,6 @@ def restore_running_config_on_all_devices_async(devices):
 def commit_replace_hostame_config(device, retry=True):
     # Note: The name under devices in testbed yaml file must always match the hostname.
     try:
-        pprint("Try commit replace and hostname config for device {device}".
-               format(device=device.name))
         device.state_machine.hostname = "ios"
         device.configure("commit replace", prompt_recovery=True)
         device.state_machine.hostname = device.name
@@ -292,10 +280,11 @@ def commit_replace_hostame_config(device, retry=True):
                        learn_hostname=True,
                        log_stdout=False,
                        login_creds=login_creds)
-    except Exception as err:
-        pprint(
-            "Commit replace and hostname config failed for device {device} : {err}"
-            .format(device=device.name, err=str(err)))
+        pprint("Commit replace and hostname config done for device {device}".
+               format(device=device.name))
+    except Exception:
+        pprint("Commit replace and hostname config failed for device {device}".
+               format(device=device.name))
         device.destroy()
         device.connect(prompt_recovery=True,
                        learn_hostname=True,
@@ -321,9 +310,10 @@ def apply_mh_config(device, retry=True):
     try:
         pprint("Applying MH Config on {device}".format(device=device.name))
         device.configure(device.custom.mh_config, prompt_recovery=True)
-    except Exception as err:
-        pprint("Failed to apply MH config on {device}: {err}".format(
-            device=device.name, err=str(err)))
+        pprint("Applied MH Config on {device}".format(device=device.name))
+    except Exception:
+        pprint(
+            "Failed to apply MH config on {device".format(device=device.name))
         device.destroy()
         device.connect(prompt_recovery=True,
                        learn_hostname=True,
@@ -340,9 +330,9 @@ def apply_mh_config_all(devices):
         try:
             pprint("Applying MH Config on {device}".format(device=device.name))
             apply_mh_config(device)
-        except Exception as err:
-            pprint("Failed to apply MH config on {device}: {err}".format(
-                device=device.name, err=str(err)))
+        except Exception:
+            pprint("Failed to apply MH config on {device".format(
+                device=device.name))
 
 
 def apply_mh_config_all_async(devices):
@@ -359,11 +349,11 @@ def apply_mh_config_all_async(devices):
 
 def configure_lldp_on_device(device, retry=True):
     try:
-        pprint("configure lldp on device {device}".format(device=device.name))
         configure.configure_lldp(device)
-    except Exception as err:
-        pprint("LLDP configuration on device {device} failed : {err}".format(
-            device=device.name, err=str(err)))
+        pprint("configured lldp on device {device}".format(device=device.name))
+    except Exception:
+        pprint("LLDP configuration on device {device} failed".format(
+            device=device.name))
         device.destroy()
         device.connect(prompt_recovery=True,
                        learn_hostname=True,
@@ -395,15 +385,13 @@ def build_lldp_info_dict(devices, retry=True):
     lldp_info_dict = {}
     for device in devices:
         try:
-            pprint(
-                "Try to get lldp neighbour info from device {device}".format(
-                    device=device.name))
             lldp_info_dict[device.name] = lldp_get.get_lldp_neighbors_info(
                 device)
-        except Exception as err:
-            pprint(
-                "Failed to get lldp neighbour info from device {device} : {err}"
-                .format(device=device.name, err=str(err)))
+            pprint("Received lldp neighbour info from device {device}".format(
+                device=device.name))
+        except Exception:
+            pprint("Failed to get lldp neighbour info from device {device}".
+                   format(device=device.name))
             device.destroy()
             device.connect(prompt_recovery=True,
                            learn_hostname=True,
@@ -417,13 +405,12 @@ def build_lldp_info_dict(devices, retry=True):
 
 def update_lldp_info_dict(device, lldp_info_dict, retry=True):
     try:
-        pprint("Try to get lldp neighbour info from device {device}".format(
-            device=device.name))
         lldp_info_dict[device.name] = lldp_get.get_lldp_neighbors_info(device)
-    except Exception as err:
-        pprint(
-            "Failed to get lldp neighbour info from device {device} : {err}".
-            format(device=device.name, err=str(err)))
+        pprint("Got lldp neighbour info from device {device}".format(
+            device=device.name))
+    except Exception:
+        pprint("Failed to get lldp neighbour info from device {device}".format(
+            device=device.name))
         device.destroy()
         device.connect(prompt_recovery=True,
                        learn_hostname=True,
@@ -437,7 +424,7 @@ def build_no_link_dict(lldp_info_dict, devices_fail):
     no_link_dict = {}
     for device_name in lldp_info_dict.keys():
         lldp_info = lldp_info_dict[device_name]
-        if not lldp_info["total_entries"]:
+        if not lldp_info or not lldp_info["total_entries"]:
             no_link_dict[device_name] = "standalone"
     for device in devices_fail:
         no_link_dict[device.name] = "dead"

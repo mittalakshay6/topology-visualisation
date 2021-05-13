@@ -1,7 +1,7 @@
 
 
 var nodeReservationData = {
-    "Arches_2013": "OCCUPIED",
+    "Arches_2031": "OCCUPIED",
     "Bigbend_2017": "OCCUPIED",
     "Bigbend_2020": "FREE",
     "Bigbend_2021": "FREE",
@@ -32,4 +32,4 @@ var nodeReservationData = {
     "Zermatt_2010": "FREE"
 };
 
-var reservation_timestamp = "11/May/2021 21:47:07"
+var reservation_timestamp = "13/May/2021 03:03:46"

@@ -1,9 +1,9 @@
 devices:
-  Arches_2013:
+  Arches_2031:
     connections:
       a:
         ip: 10.64.103.82
-        port: 2013
+        port: 2031
         protocol: telnet
       default:
         class: unicon.Unicon
@@ -255,7 +255,7 @@ devices:
       execute_timeout: 80
       mh_config: null
       project: null
-      tgen: Port 2/15
+      tgen: Ixia 10.64.109.98 Port 2/15
     os: iosxr
     type: router
   J2_modular_2028:
